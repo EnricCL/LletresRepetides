@@ -16,8 +16,7 @@ public class Fase3 {
 
 	public static void main(String[] args) {
 		
-		//Variables globals que es reutilitzen en els bucles
-		char lletra;		
+		//Variable global que es reutilitza en els bucle
 		int comptador = 0;
 		
 		//Llista de Characters per al nom
@@ -30,33 +29,21 @@ public class Fase3 {
 		nom.add('i');
 		nom.add('c');
 		
-		//Llista de nombre de vegades que apareixen
-		List<Integer> comptarLletres = new ArrayList<>();
-		
-		//LinkedHashMap per emmagatzemar nom i nombre per ordre d'inclusió
+		//LinkedHashMap per emmagatzemar lletra i nombre per ordre d'inclusió
 		LinkedHashMap< String, String> persona = new LinkedHashMap<String, String>();				
 		
 		//Bucle per recorrer el nom
-		for (int i=0; i<nom.size(); i++) {
-			
-			lletra=nom.get(i); //S'emmagatzema la lletra actual	
+		for (int i=0; i<nom.size(); i++) {	
 			
 			//Bucle per a obtenir el nombre de vegades que apareix la lletra actual
 			for(int j=0; j<nom.size(); j++) {
-				if(nom.get(j) == lletra) comptador++;
+				if(nom.get(j) == nom.get(i)) comptador++;
 			}
-			//S'afegeix al llistat de nombres comptarlletres
-			comptarLletres.add(comptador);
-			comptador=0;
 			
-			//S'inclou al Map la lletra actual, aprofitant el nº de iteració com a clau
-			persona.put(Integer.toString(i), String.valueOf(lletra));
+			//S'inclou al Map la lletra actual i les vegades que hi surt
+			persona.put(String.valueOf(nom.get(i)), Integer.toString(comptador));
+			comptador=0; //reinici del comptador per a la següent lletra
 			
-		}
-		
-		//Bucle per afegir al Map el nombre de vegades que apareixen
-		for (int i=0; i<comptarLletres.size(); i++) {
-			persona.put(Integer.toString(nom.size()+i), String.valueOf(comptarLletres.get(i)));
 		}
 		
 		//Per a comprovar que es guarden les lletres de la llista i el nombre de vegades que apareixen

@@ -8,15 +8,11 @@
  *
  */
 
- //Variables globals que es reutilitzen en els bucles
- var lletra
+ //Variables global que es reutilitza en els bucles
  var comptador = 0
 
  //Array del nom
  var nom = ["E","n","r","i","c"]
-
- //Array per emmagatzemar el nombre de vegades que apareixen
- var comptarLletres = []
 
  //Map per emmagatzemar nom i nombre
  var persona = new Map()
@@ -29,22 +25,14 @@
     //Bucle per a obtenir el nombre de vegades que 
     //apareix la lletra actual
     for(var j = 0; j < nom.length ; j++){
-        if(nom[j] == lletra) comptador++
+        if(nom[j] == nom[i]) comptador++
     }
 
-    //S'afegeix al llistat de nombres comptarLletres
-    comptarLletres.push(comptador)
-    comptador = 0
-
     //S'inclou al Map la lletra actual 
-    //amb la clau de la iteració actual
-    persona.set(i , lletra)
+    //amb les vegades que surt
+    persona.set(nom[i] , comptador)
+    comptador = 0 //reinicia comptador per a la següent lletra
 
- }
-
- //Bucle per afegir al Map el nombre de vegades que apareixen
- for(var k = 0; k < comptarLletres.length ; k++){
-     persona.set(nom.length+k , comptarLletres[k] )
  }
 
  //Per a comprovar que es guarden les lletres de la llista
